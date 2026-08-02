@@ -1,0 +1,268 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-slime: var(--slime);
+  --color-slime-deep: var(--slime-deep);
+  --color-zap: var(--zap);
+  --color-blaze: var(--blaze);
+  --color-ink: var(--ink);
+  --font-display: "Bungee", system-ui, sans-serif;
+  --font-scrawl: "Rubik Mono One", system-ui, sans-serif;
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.75rem;
+
+  /* chroma-key green screen palette */
+  --slime: oklch(0.86 0.29 143);
+  --slime-deep: oklch(0.62 0.24 145);
+  --zap: oklch(0.88 0.19 96);
+  --blaze: oklch(0.72 0.2 45);
+  --ink: oklch(0.14 0.01 150);
+
+  --background: oklch(0.14 0.01 150);
+  --foreground: oklch(0.98 0.01 140);
+  --card: oklch(0.19 0.02 150);
+  --card-foreground: oklch(0.98 0.01 140);
+  --popover: oklch(0.19 0.02 150);
+  --popover-foreground: oklch(0.98 0.01 140);
+  --primary: oklch(0.86 0.29 143);
+  --primary-foreground: oklch(0.14 0.01 150);
+  --secondary: oklch(0.88 0.19 96);
+  --secondary-foreground: oklch(0.14 0.01 150);
+  --muted: oklch(0.24 0.02 150);
+  --muted-foreground: oklch(0.75 0.03 140);
+  --accent: oklch(0.72 0.2 45);
+  --accent-foreground: oklch(0.14 0.01 150);
+  --destructive: oklch(0.62 0.24 27);
+  --destructive-foreground: oklch(0.98 0.01 140);
+  --border: oklch(0.32 0.05 150);
+  --input: oklch(0.32 0.05 150);
+  --ring: oklch(0.86 0.29 143);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--slime);
+    color: var(--ink);
+  }
+}
+
+/* ---------- keyframes ---------- */
+@keyframes pk-wiggle {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-1.5deg);
+  }
+  25% {
+    transform: translate3d(3px, -6px, 0) rotate(1.5deg);
+  }
+  50% {
+    transform: translate3d(-2px, 2px, 0) rotate(-1deg);
+  }
+  75% {
+    transform: translate3d(4px, -3px, 0) rotate(2deg);
+  }
+}
+
+@keyframes pk-recoil {
+  0%,
+  92%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  94% {
+    transform: translate3d(-10px, 4px, 0) scale(1.03) rotate(-3deg);
+  }
+  96% {
+    transform: translate3d(6px, -2px, 0) scale(0.99) rotate(2deg);
+  }
+}
+
+@keyframes pk-glitch-a {
+  0%,
+  88%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  90% {
+    transform: translate(-4px, 2px);
+    opacity: 0.9;
+  }
+  93% {
+    transform: translate(5px, -3px);
+    opacity: 0.7;
+  }
+  96% {
+    transform: translate(-2px, 1px);
+    opacity: 0.85;
+  }
+}
+
+@keyframes pk-flicker {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  91% {
+    opacity: 0.35;
+  }
+  92% {
+    opacity: 1;
+  }
+  94% {
+    opacity: 0.15;
+  }
+  95% {
+    opacity: 1;
+  }
+}
+
+@keyframes pk-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pk-pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 color-mix(in oklab, var(--slime) 55%, transparent),
+      0 0 22px color-mix(in oklab, var(--slime) 45%, transparent);
+  }
+  50% {
+    box-shadow:
+      0 0 0 12px color-mix(in oklab, var(--slime) 0%, transparent),
+      0 0 46px color-mix(in oklab, var(--slime) 70%, transparent);
+  }
+}
+
+@keyframes pk-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(6deg);
+  }
+}
+
+@keyframes pk-confetti {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ---------- utilities ---------- */
+@utility pk-wiggle {
+  animation: pk-wiggle 3.2s ease-in-out infinite;
+}
+
+@utility pk-recoil {
+  animation: pk-recoil 6s ease-in-out infinite;
+}
+
+@utility pk-flicker {
+  animation: pk-flicker 7s linear infinite;
+}
+
+@utility pk-glow {
+  animation: pk-pulse-glow 2.6s ease-in-out infinite;
+}
+
+@utility pk-float {
+  animation: pk-float 5s ease-in-out infinite;
+}
+
+@utility pk-marquee-track {
+  animation: pk-marquee 22s linear infinite;
+}
+
+@utility pk-outline {
+  -webkit-text-stroke: 3px var(--ink);
+  paint-order: stroke fill;
+}
+
+@utility pk-shadow-hard {
+  box-shadow: 6px 6px 0 0 var(--ink);
+}
+
+@utility pk-shadow-slime {
+  box-shadow: 6px 6px 0 0 color-mix(in oklab, var(--slime) 90%, black 10%);
+}
+
+@utility pk-noise {
+  background-image: radial-gradient(
+    color-mix(in oklab, var(--slime) 18%, transparent) 1px,
+    transparent 1px
+  );
+  background-size: 18px 18px;
+}
+
+@utility pk-text-glow {
+  text-shadow:
+    0 0 12px color-mix(in oklab, var(--slime) 70%, transparent),
+    0 0 40px color-mix(in oklab, var(--slime) 45%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
