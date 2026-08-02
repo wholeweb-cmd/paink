@@ -37,8 +37,10 @@ export function Hero() {
 
           <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
             <a
-              href="#community"
+              href="https://www.ponsfamily.com/launchpad/0xCB85c42B31498D9831076f2C781Fd8472CA24899"
               className="pk-glow rounded-xl border-4 border-ink bg-slime px-7 py-4 font-display text-lg text-ink transition-transform duration-150 hover:-translate-y-1.5 hover:scale-105 hover:-rotate-2 active:translate-y-0"
+
+              target="_blank" rel="noopener noreferrer"
             >
               BUY NOW
             </a>
