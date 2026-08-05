@@ -37,7 +37,7 @@ export function Hero() {
 
           <div className="mt-7 flex flex-wrap justify-center gap-3 lg:justify-start">
             <a
-              href="https://app.virtuals.io/virtuals/"
+              href="https://app.virtuals.io/virtuals/130238"
               className="pk-glow rounded-xl border-4 border-ink bg-slime px-7 py-4 font-display text-lg text-ink transition-transform duration-150 hover:-translate-y-1.5 hover:scale-105 hover:-rotate-2 active:translate-y-0"
 
               target="_blank" rel="noopener noreferrer"
