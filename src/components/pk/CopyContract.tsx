@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 const COLORS = ["var(--slime)", "var(--zap)", "var(--blaze)", "#ffffff"];
 
 export function CopyContract({
-  address = "0xCB85c42B31498D9831076f2C781Fd8472CA24899",
+  address = "soon",
   className,
 }: {
   address?: string;
