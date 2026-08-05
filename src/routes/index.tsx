@@ -24,6 +24,11 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      {
+        name: "virtual-protocol-site-verification",
+        content: "b43945bd31a57054c81e79c4d377ba2d",
+
+      },
     ],
   }),
   component: Index,
